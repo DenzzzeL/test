@@ -1,7 +1,4 @@
-/* const firstName = 'Abaddon'
-firstName = 'Ivan'
-console.log('Hello', firstName)*/
-
-let firstName = 'Abaddon'
-firstName = 'Ivan'
-console.log('Hello', firstName)
+let userName = 'Denis'
+let userAge = '37'
+let userCity = 'Yuzhno-Sakhalinsk'
+let userHobby = 'Travel'
