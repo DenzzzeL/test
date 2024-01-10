@@ -70,19 +70,43 @@ const getServicePercentPrices = function () {
 
 servicePercentPrice = getAllServicePrices()
 
-// Вычисление скидки
-if (fullPrice > 50000) {
-  console.log('Сделаем скидку в 10%')
-} else if (fullPrice > 20000 && fullPrice < 40000) {
-  console.log('Сделаем скидку 5%')
-} else if (fullPrice < 20000 && fullPrice > 0) {
-  console.log('Скидка не предусмотрена')
-} else if (fullPrice === 0) {
-  console.log('Даром')
-} else if (fullPrice === 20000) {
-  console.log('Сделаем скидку 5%')
-} else if (fullPrice === 50000) {
-  console.log('Сделаем скидку в 10%')
-} else if (fullPrice < 0) {
-  console.log('Что-то пошло не так')
+// Функция для вывода типа скидки
+let rollbackMessage = ''
+
+const showTypeOf = function (discount) {
+  if (discount === 10) {
+    rollbackMessage = 'Сделаем скидку в 10%'
+  } else if (discount === 5) {
+    rollbackMessage = 'Сделаем скидку 5%'
+  } else {
+    rollbackMessage = 'Скидка не предусмотрена'
+  }
+  return rollbackMessage
 }
+
+// Функция для получения сообщения о скидке
+const getRollbackMessage = function (price) {
+  let discount = 0
+
+  if (price > 50000) {
+    discount = 10
+  } else if (price > 20000 && price < 40000) {
+    discount = 5
+  } else if (price < 20000 && price > 0) {
+    discount = 0
+  } else if (price === 0) {
+    discount = 0
+  } else if (price === 20000) {
+    discount = 5
+  } else if (price === 50000) {
+    discount = 10
+  } else if (price < 0) {
+    discount = 0
+  }
+
+  return showTypeOf(discount)
+}
+
+// Пример использования функций
+const discountMessage = getRollbackMessage(fullPrice)
+console.log(discountMessage)
