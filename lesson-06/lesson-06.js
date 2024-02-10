@@ -69,17 +69,20 @@ const getServicePercentPrices = function () {
 }
 
 const getTitle = function () {
-  return (
-    titleProject[0].toUpperCase() + titleProject.slice(1).toLocaleLowerCase()
-  )
+  const trimmedTitle = titleProject.trim()
+  if (trimmedTitle[0] === ' ') {
+    return trimmedTitle[0].toLowerCase() + trimmedTitle.slice(1)
+  } else {
+    return trimmedTitle[0].toUpperCase() + trimmedTitle.slice(1).toLowerCase()
+  }
 }
 
 // Функция для получения сообщения о скидке
 const getPercentMessage = function (price) {
-  // let discount = 0
-
   if (price > 50000) {
     return 'Делаем скидку 10%'
+  } else if (price > 40000 && price < 50000) {
+    return 'Делаем скидку 7%'
   } else if (price > 20000 && price < 40000) {
     return 'Делаем скидку 5%'
   } else if (price < 20000 && price > 0) {
